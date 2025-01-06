@@ -29,3 +29,10 @@ func decodeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Fprintln(w, "OK")
 }
+
+func main() {
+	mux := http.NewServeMux()
+	mux.HandleFunc("/decode", decodeHandler)
+
+	http.ListenAndServe(":8080", mux)
+}
